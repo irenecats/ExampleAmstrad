@@ -1,0 +1,80 @@
+ASxxxx Linker V03.00 + NoICE + sdld,  page 1.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.  .ABS.                            00000000    00000000 =           0. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00000000  .__.ABS.                           cpct_video
+     00000000  l__DATA                         
+     00000003  max_entities                       
+     00000007  entity_size                        
+     0000016D  l__CODE                         
+     00004000  s__CODE                         
+     0000416D  s__DATA                         
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 2.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+_CODE                               00004000    0000016D =         365. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00004000  _num_entities                      
+     00004001  _last_elem_ptr                     
+     00004003  _entity_array                      
+     00004018  entityman_create                   
+     00004033  entityman_getEntityArray_IX        
+     00004038  entityman_getNumEntities_A         
+     0000403C  player                             cpct_keyboard
+     00004043  enemy                              cpct_keyboard
+     0000404A  _main                              cpct_keyboard
+     00004067  rendersys_init                     
+     00004068  rendersys_update                   
+     0000408C  _cpct_waitVSYNC                    cpct_video
+     0000408C  cpct_waitVSYNC_asm                 cpct_video
+     00004094  _cpct_disableFirmware              cpct_firmware
+     00004094  _cpct_removeInterruptHandler       cpct_firmware
+     00004094  cpct_disableFirmware_asm           cpct_firmware
+     00004094  cpct_removeInterruptHandler_asm    cpct_firmware
+     000040A4  cpct_drawSolidBox_asm              cpct_sprites
+     00004150  _cpct_mode_rom_status              cpct_firmware
+     00004151  cpct_getScreenPtr_asm              cpct_video
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 3.
+
+Files Linked                              [ module(s) ]
+
+obj/cpctelera_functions.h.rel             [  ]
+obj/entity_manager.rel                    [  ]
+obj/entity_manager.h.rel                  [  ]
+obj/main.rel                              [ cpct_keyboard ]
+obj/render_system.rel                     [  ]
+obj/render_system.h.rel                   [  ]
+
+
+Libraries Linked                          [ object file ]
+
+/home/irene/Desktop/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_waitVSYNC.rel ]
+/home/irene/Desktop/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_removeInterruptHandler.rel ]
+/home/irene/Desktop/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_drawSolidBox_asmbindings.re ]
+/home/irene/Desktop/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpc_mode_rom_status.rel ]
+/home/irene/Desktop/cpctelera/cpctelera/cpctelera.lib
+                                          [ cpct_getScreenPtr_asmbindings.re ]
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 4.
+
+User Base Address Definitions
+
+_CODE = 0x4000
+_DATA = 0x0000
+
+

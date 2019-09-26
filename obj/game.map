@@ -9,51 +9,56 @@ Area                                    Addr        Size        Decimal Bytes (A
       -----  --------------------------------   ------------------------
      00000000  .__.ABS.                           cpct_video
      00000000  l__DATA                         
-     00000003  max_entities                       
-     00000007  entity_size                        
-     0000016D  l__CODE                         
+     00000003  max_entities                       Entity_Manager
+     00000007  _entity_size                       Entity_Manager
+     0000018B  l__CODE                         
      00004000  s__CODE                         
-     0000416D  s__DATA                         
+     0000418B  s__DATA                         
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 2.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_CODE                               00004000    0000016D =         365. bytes (REL,CON)
+_CODE                               00004000    0000018B =         395. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-     00004000  _num_entities                      
-     00004001  _last_elem_ptr                     
-     00004003  _entity_array                      
-     00004018  entityman_create                   
-     00004033  entityman_getEntityArray_IX        
-     00004038  entityman_getNumEntities_A         
-     0000403C  player                             cpct_keyboard
-     00004043  enemy                              cpct_keyboard
-     0000404A  _main                              cpct_keyboard
-     00004067  rendersys_init                     
-     00004068  rendersys_update                   
-     0000408C  _cpct_waitVSYNC                    cpct_video
-     0000408C  cpct_waitVSYNC_asm                 cpct_video
-     00004094  _cpct_disableFirmware              cpct_firmware
-     00004094  _cpct_removeInterruptHandler       cpct_firmware
-     00004094  cpct_disableFirmware_asm           cpct_firmware
-     00004094  cpct_removeInterruptHandler_asm    cpct_firmware
-     000040A4  cpct_drawSolidBox_asm              cpct_sprites
-     00004150  _cpct_mode_rom_status              cpct_firmware
-     00004151  cpct_getScreenPtr_asm              cpct_video
-
+     00004000  _num_entities                      Entity_Manager
+     00004001  _last_entity_ptr                   Entity_Manager
+     00004003  _entity_array                      Entity_Manager
+     00004018  entity_man_init                    Entity_Manager
+     00004023  entity_man_new                     Entity_Manager
+     00004034  entity_man_create                  Entity_Manager
+     00004040  entity_man_getArray                Entity_Manager
+     00004048  player                             gameManager
+     0000404F  enemy1                             gameManager
+     00004056  game_man_init                      gameManager
+     00004069  game_man_update                    gameManager
+     0000406D  game_man_render                    gameManager
+     00004074  _main                              cpct_keyboard
+     00004085  render_sys_init                    render_system
+     00004086  render_sys_update                  render_system
+     000040AA  _cpct_waitVSYNC                    cpct_video
+     000040AA  cpct_waitVSYNC_asm                 cpct_video
+     000040B2  _cpct_disableFirmware              cpct_firmware
+     000040B2  _cpct_removeInterruptHandler       cpct_firmware
+     000040B2  cpct_disableFirmware_asm           cpct_firmware
+     000040B2  cpct_removeInterruptHandler_asm    cpct_firmware
+     000040C2  cpct_drawSolidBox_asm              cpct_sprites
+     0000416E  _cpct_mode_rom_status              cpct_firmware
+     0000416F  cpct_getScreenPtr_asm              cpct_video
 ASxxxx Linker V03.00 + NoICE + sdld,  page 3.
 
 Files Linked                              [ module(s) ]
 
 obj/cpctelera_functions.h.rel             [  ]
-obj/entity_manager.rel                    [  ]
+obj/entity_manager.rel                    [ Entity_Manager ]
+obj/game_manager.rel                      [ gameManager ]
+obj/game_manager.h.rel                    [  ]
 obj/entity_manager.h.rel                  [  ]
 obj/main.rel                              [ cpct_keyboard ]
-obj/render_system.rel                     [  ]
+obj/render_system.rel                     [ render_system ]
 obj/render_system.h.rel                   [  ]
 
 

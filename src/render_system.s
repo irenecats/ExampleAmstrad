@@ -1,17 +1,18 @@
 ;;
 ;; RENDER SYSTEM
 ;;
+.module render_system
 .include "cpctelera_functions.h.s"
 .include "entity_manager.h.s"
 
-rendersys_init::
+render_sys_init::
 
 ret
 
 ;;INPUT
 ;;      IX: Pointer to fist element
 ;;      A: Number of entities
-rendersys_update::
+render_sys_update::
 _renloop:
     push af
 
@@ -32,6 +33,6 @@ _renloop:
 
     ret z
 
-    ld bc, #entity_size
+    ld bc, #_entity_size
     add ix,bc
     jr _renloop

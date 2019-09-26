@@ -2544,136 +2544,42 @@ Hexadecimal [16-Bits]
 
 
 
-                             22 .include "entity_manager.h.s"
+                             22 .include "game_manager.h.s"
                               1 ;;
-                              2 ;;  ENTITYMANAGER
+                              2 ;;      GAME MANAGER
                               3 ;;
                               4 
-                              5 ;; GLOBAL FUNCTIONS
-                              6 .globl entityman_create
-                              7 .globl entityman_getEntityArray_IX
-                              8 .globl entityman_getNumEntities_A
-                              9 
-                             10 ;;  GLOBAL CONSTANTS
-                             11 .globl entity_size
-                             12 
-                             13 ;;
-                             14 
-                             15 
-                     0000    16 e_x = 0
-                     0001    17 e_y = 1
-                     0002    18 e_vx = 2
-                     0003    19 e_vy = 3
-                     0004    20 e_w = 4
-                     0005    21 e_h = 5
-                     0006    22 e_c = 6
-                     0007    23 e_sizeof =7
+                              5 ;;      FUNCTIONS
+                              6 .globl game_man_init
+                              7 .globl game_man_update
+                              8 .globl game_man_render
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 52.
 Hexadecimal [16-Bits]
 
 
 
-                             23 .include "render_system.h.s"
-                              1 ;;
-                              2 ;; RENDER SYSTEM
-                              3 ;;
-                              4 .globl rendersys_init
-                              5 .globl rendersys_update
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 53.
-Hexadecimal [16-Bits]
-
-
-
-                             24 
-                             25 ;;
-                             26 ;; Start of _DATA area 
-                             27 ;;  SDCC requires at least _DATA and _CODE areas to be declared, but you may use
-                             28 ;;  any one of them for any purpose. Usually, compiler puts _DATA area contents
-                             29 ;;  right after _CODE area contents.
-                             30 ;;
-                             31 .area _DATA
-                             32 .area _CODE
-                             33 ;;
-                             34 .macro DefineEntity _name, _x, _y, _vx, _vy, _w, _h, _color
-                             35 _name::
-                             36    .db _x
-                             37    .db _y
-                             38    .db _w
-                             39    .db _h
-                             40    .db _vx
-                             41    .db _vy   
-                             42    .db _color
-                             43 .endm
-   403C                      44 DefineEntity player, 0, 20, 2, 8, 1, 1, #0xf0
-   0000                       1 player::
-   403C 00                    2    .db 0
-   403D 14                    3    .db 20
-   403E 01                    4    .db 1
-   403F 01                    5    .db 1
-   4040 02                    6    .db 2
-   4041 08                    7    .db 8   
-   4042 F0                    8    .db #0xf0
-   4043                      45 DefineEntity enemy, 40, 80, 3, 12, -1, 0, #0xff
-   0007                       1 enemy::
-   4043 28                    2    .db 40
-   4044 50                    3    .db 80
-   4045 FF                    4    .db -1
-   4046 00                    5    .db 0
-   4047 03                    6    .db 3
-   4048 0C                    7    .db 12   
-   4049 FF                    8    .db #0xff
-                             46 ;player: .db 0, 20, 2, 8, 1, 1, #0xf0
-                             47 ;enemy: .db  40, 80, 3, 12, -1, 0, #0xff
-                             48 
-                             49 
-                             50 
-                             51 
-                             52 ;;
-                             53 ;; MAIN function. This is the entry point of the application.
-                             54 ;;    _main:: global symbol is required for correctly compiling and linking
-                             55 ;;
-                             56 
-                             57 
-   404A                      58 _main::
-                             59    ;; Disable firmware to prevent it from interfering with string drawing
-   404A CD 94 40      [17]   60    call cpct_disableFirmware_asm
-                             61    
-   404D CD 67 40      [17]   62    call rendersys_init
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 54.
-Hexadecimal [16-Bits]
-
-
-
-                             63 
-   4050 21 3C 40      [10]   64    ld    hl, #player
-   4053 CD 18 40      [17]   65    call entityman_create
-                             66    ;
-   4056 21 43 40      [10]   67    ld    hl, #enemy
-   4059 CD 18 40      [17]   68    call entityman_create
-                             69    ;;;accedo a las variables mediante getters
-   405C CD 33 40      [17]   70    call entityman_getEntityArray_IX
-   405F CD 38 40      [17]   71    call entityman_getNumEntities_A
-                             72 ;
-   4062 CD 68 40      [17]   73    call rendersys_update
-   4065                      74 loop:
-   4065 18 FE         [12]   75 jr loop
-                             76 ;loop:
-                             77 ;   ;; Calculate a video-memory location for printing a string
-                             78 ;   ld    de, #0xc000 ;; DE = Pointer to start of the screen
-                             79 ;   ld    hl, #7
-                             80 ;   ld    b, (hl)
-                             81 ;   inc   (hl)
-                             82 ;   inc   hl
-                             83 ;   ld    c, (hl)
-                             84 ;   inc   (hl)
-                             85 ;   call cpct_getScreenPtr_asm    ;; Calculate video memory location and return it in HL
-                             86 ;   
-                             87 ;   ex    de,hl
-                             88 ;   ld    a,#0xff
-                             89 ;   ld    bc,#0x0804
-                             90 ;  call cpct_drawSolidBox_asm
-                             91 ;   halt
-                             92 ;   halt
-                             93 ; ;; Loop forever
-                             94 ;   call cpct_waitVSYNC_asm
-                             95 ;   jr    loop
+                             23 ;;
+                             24 ;; Start of _DATA area 
+                             25 ;;  SDCC requires at least _DATA and _CODE areas to be declared, but you may use
+                             26 ;;  any one of them for any purpose. Usually, compiler puts _DATA area contents
+                             27 ;;  right after _CODE area contents.
+                             28 ;;
+                             29 .area _DATA
+                             30 .area _CODE
+                             31 .module main
+                             32 ;;
+                             33 ;; MAIN function. This is the entry point of the application.
+                             34 ;;    _main:: global symbol is required for correctly compiling and linking
+                             35 ;;
+                             36 
+                             37 
+   4074                      38 _main::
+                             39    ;; Disable firmware to prevent it from interfering with string drawing
+   4074 CD B2 40      [17]   40    call cpct_disableFirmware_asm
+                             41    
+   4077 CD 56 40      [17]   42    call game_man_init                    ;;initialize game manager
+   407A                      43 loop:
+   407A CD 69 40      [17]   44    call game_man_update                  
+   407D CD AA 40      [17]   45    call cpct_waitVSYNC_asm
+   4080 CD 6D 40      [17]   46    call game_man_render
+   4083 18 F5         [12]   47 jr loop

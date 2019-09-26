@@ -6,5 +6,5 @@ Hexadecimal [16-Bits]
                               1 ;;
                               2 ;; RENDER SYSTEM
                               3 ;;
-                              4 .globl rendersys_init
-                              5 .globl rendersys_update
+                              4 .globl render_sys_init
+                              5 .globl render_sys_update

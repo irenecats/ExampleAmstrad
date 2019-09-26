@@ -1,32 +1,40 @@
 XL2
-H 1 areas 9 global symbols
+H 1 areas A global symbols
+M Entity_Manager
 S max_entities Def0003
+S _entity_size Def0007
 S .__.ABS. Def0000
-S entity_size Def0007
-A _CODE size 3C flags 0 addr 0
-S _last_elem_ptr Def0001
-S entityman_getNumEntities_A Def0038
-S entityman_create Def0018
+A _CODE size 48 flags 0 addr 0
+S _last_entity_ptr Def0001
+S entity_man_create Def0034
+S entity_man_init Def0018
+S entity_man_getArray Def0040
+S entity_man_new Def0023
 S _num_entities Def0000
-S entityman_getEntityArray_IX Def0033
 S _entity_array Def0003
 T 00 00 00 03 00
 R 00 00 00 00 00 03 00 00
 T 03 00
 R 00 00 00 00
-T 03 00
+T 03 00 DE AD DE AD DE AD AA DE AD DE AD DE AD AA
+R 00 00 00 00
+T 11 00 DE AD DE AD DE AD AA
 R 00 00 00 00
 T 18 00
 R 00 00 00 00
-T 18 00 ED 5B 01 00 01 07 00 ED B0 3A 00 00 3C 32
-R 00 00 00 00 00 04 00 00 00 0C 00 00
-T 26 00 00 00 2A 01 00 01 07 00 09 22 01 00 C9
-R 00 00 00 00 00 02 00 00 00 05 00 00 00 0C 00 00
-T 33 00
+T 18 00 AF 32 00 00 21 03 00 22 01 00 C9
+R 00 00 00 00 00 04 00 00 00 07 00 00 00 0A 00 00
+T 23 00
 R 00 00 00 00
-T 33 00 DD 21 03 00 C9
+T 23 00 21 00 00 34 2A 01 00 54 5D 01 07 00 09 22
+R 00 00 00 00 00 03 00 00 00 07 00 00
+T 31 00 01 00 C9
+R 00 00 00 00 00 02 00 00
+T 34 00
+R 00 00 00 00
+T 34 00 E5 CD 23 00 DD 62 DD 6B E1 ED B0 C9
 R 00 00 00 00 00 04 00 00
-T 38 00
+T 40 00
 R 00 00 00 00
-T 38 00 3A 00 00 C9
-R 00 00 00 00 00 03 00 00
+T 40 00 DD 21 03 00 3A 00 00 C9
+R 00 00 00 00 00 04 00 00 00 07 00 00

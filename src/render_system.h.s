@@ -1,5 +1,5 @@
 ;;
 ;; RENDER SYSTEM
 ;;
-.globl rendersys_init
-.globl rendersys_update
+.globl render_sys_init
+.globl render_sys_update
